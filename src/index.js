@@ -8,6 +8,7 @@ import './assets/css/reset.css'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import todoApp from './rootReducer'
+import 'antd-mobile/dist/antd-mobile.css';
 let store = createStore(todoApp)
 ReactDOM.render(
     <Provider store={store}>

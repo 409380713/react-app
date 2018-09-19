@@ -4,6 +4,7 @@ import {BrowserRouter,Route,Switch,Redirect,withRouter} from 'react-router-dom'
 import { connect } from 'react-redux'
 import Immutable from 'immutable'
 import {updateData} from '@/actions'
+import Login from '@page/Login'
 class App extends Component {
   constructor(){
     super()
@@ -17,7 +18,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-         app
+         <Login></Login>
       </div>
     );
   }
