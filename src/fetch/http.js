@@ -1,5 +1,4 @@
-import { resolve } from "path";
-import { rejects } from "assert";
+
 const defaultHeaders = {
     'Access-Control-Allow-Origin':'*',
     'Ekaidan-AppName': 'RUIJIA',
@@ -56,3 +55,4 @@ http.post = function(url,params,header = defaultHeaders){
         })
     })
 }
+export default http
