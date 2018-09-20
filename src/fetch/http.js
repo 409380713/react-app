@@ -22,7 +22,7 @@ http.get = function(url,params,header = defaultHeaders){
     return new Promise ((resolve,reject) =>{
         fetch(url,{
             method:'GET',
-            header:header,
+            headers:header,
         }).then(res => {
             if (res.ok) {
                 return res.json();
@@ -37,10 +37,12 @@ http.get = function(url,params,header = defaultHeaders){
     })
 }
 http.post = function(url,params,header = defaultHeaders){
+    console.log(header)
+    
     return new Promise ((resolve,reject) =>{
         fetch(url,{
             method:'POST',
-            header:header,
+            headers:header,
             body:formatParams(params)
         }).then(res => {
             if (res.ok) {

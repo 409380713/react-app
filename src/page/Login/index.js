@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import './index.scss'
-import { BrowserRouter, Route, Switch, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Immutable from 'immutable'
+import {updateUserMessage} from './actions'
+import {withRouter} from "react-router-dom";
 import { Button, List, InputItem, Toast } from 'antd-mobile'
-import { createForm } from 'rc-form';
+import http from '@/fetch/http'
+import {LOGIN} from '@/fetch/apis'
 class Login extends Component {
   constructor(props) {
     super(props)
@@ -23,10 +25,19 @@ class Login extends Component {
         Toast.info('请输入密码',1)
         return
     } 
-    console.log(username,password)
+    
+    http.post(LOGIN,{username,password}).then(res => {
+      const {status} = res;
+      if(status === 1){
+        Toast.loading('登录中...',1,()=>{
+          // 登录成功等待跳转
+          this.props.updateUserMessage(res)
+          this.props.history.push('/container/home')
+        })
+      }
+    })
   }
   render() {
-    const { getFieldProps } = this.props.form;
     return (
       <div className="content">
         <div style={{ width: '100%' }}>
@@ -52,4 +63,13 @@ class Login extends Component {
     )
   }
 }
-export default createForm()(Login);
+const mapStateToProps = state =>{
+  return {
+  }
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    updateUserMessage:(data)=>dispatch(updateUserMessage(data))
+  }
+}
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Login))

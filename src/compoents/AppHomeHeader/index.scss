@@ -1,0 +1,29 @@
+.app-header{
+    background: #fff;
+    padding-bottom: 0.2rem;
+   .user-show{
+       width: 95%;
+       margin-left: 2.5%;
+       background: #ff1300;
+       color:#fff;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       border-radius: 0.2rem;
+       margin-top: 0.2rem;
+       padding:0.2rem;
+       box-sizing: border-box;
+       div{
+           flex:1;
+           font-size: 0.28rem;
+           text-align: center;
+           &:nth-child(1){
+                border-right: 1px solid #fff
+            }
+           .user-num{
+               margin-top: 0.1rem;
+               
+           }
+       }
+   }
+}

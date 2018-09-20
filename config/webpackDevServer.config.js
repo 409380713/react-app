@@ -80,7 +80,14 @@ module.exports = function(proxy, allowedHost) {
       disableDotRule: true,
     },
     public: allowedHost,
-    proxy,
+    // proxy,
+    proxy:{
+      "/scrm/":{
+         "target":"https://e.qianfan365.com",
+         "changeOrigin": true,
+         "secure":false
+       }
+     },
     before(app) {
       // This lets us open files from the runtime error overlay.
       app.use(errorOverlayMiddleware());

@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import Immutable from 'immutable'
 import {updateData} from '@/actions'
 import Login from '@page/Login'
+import Container from './page/index.js'
 class App extends Component {
   constructor(){
     super()
@@ -18,7 +19,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-         <Login></Login>
+        <Switch>
+            <Route path="/" exact component={Login}></Route>
+            <Route path="/container" component={Container}></Route>
+        </Switch>
       </div>
     );
   }

@@ -1,0 +1,36 @@
+.message-swiper{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.4rem;
+    background: #fff;
+    margin-top:0.2rem;
+    margin-bottom: 0.2rem;
+    .message-swiper-item{
+        border-radius: 0.6rem;
+        background: #fef3f2;
+        color:#969696;
+        font-size: 0.28rem;
+        padding:0.2rem;
+        display: flex;
+        .tip-bell{
+            width: 25px;
+            margin-left: 0.3rem;
+            margin-right: 0.3rem;
+            img{
+                width: 100%;
+            }
+        }
+        .message-text{
+            flex: 1;
+            width: 90px;
+            font-size: 0.28rem;
+            color:#969696;
+            .message-content{
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                margin-top: 0.1rem
+            }
+        }
+    }
+}
