@@ -6,6 +6,8 @@ import { Button, List, InputItem, Toast } from 'antd-mobile'
 import AppHomeHeader from '@compoents/AppHomeHeader'
 import http from '@/fetch/http'
 import MessageSwiper from './chilren/MessageSwiper'
+import Entrance from './chilren/Entrance'
+import { WhiteSpace } from 'antd-mobile';
 class Home extends Component {
   constructor(props) {
     super(props)
@@ -17,7 +19,10 @@ class Home extends Component {
     return (
       <div>
         <AppHomeHeader></AppHomeHeader>
+        <WhiteSpace style={{backgroundColor:'#f1f1f1',height:'10px'}} ></WhiteSpace>
         <MessageSwiper></MessageSwiper>
+        <WhiteSpace style={{backgroundColor:'#f1f1f1',height:'10px'}} ></WhiteSpace>
+        <Entrance></Entrance>
       </div>
     )
   }

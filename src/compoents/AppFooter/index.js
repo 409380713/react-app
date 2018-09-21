@@ -69,15 +69,15 @@ class AppFooter extends React.Component {
                     title={v.title}
                     key={v.key}
                     icon={<div style={{
-                      width: '22px',
-                      height: '22px',
+                      width: '21px',
+                      height: '21px',
                       background: 'url('+v.icon+') center center /  21px 21px no-repeat'
                     }}
                     />
                     }
                     selectedIcon={<div style={{
-                      width: '22px',
-                      height: '22px',
+                      width: '21px',
+                      height: '21px',
                       background: 'url('+v.selectedIcon+') center center /  21px 21px no-repeat'
                     }}
                     />

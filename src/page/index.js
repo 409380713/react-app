@@ -14,13 +14,13 @@ class Container extends Component {
   constructor(props) {
     super(props)
     this.state = {
-    
+      
     }
   }
   render() {
     return (
       <div>
-        <div style={{height:global.docHetght - 50+'px'}}>
+        <div style={{height:global.docHetght - 50+'px' ,backgroundColor:'#fff',overflow:'scroll'}}>
             <Switch>
                 <Route path="/container/home" component={Home}></Route>
                 <Route path="/container/crm" component={CRM}></Route>
