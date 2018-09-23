@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
-import {BrowserRouter,Route,Switch,Redirect,withRouter} from 'react-router-dom'
+import {Route,Switch,withRouter} from 'react-router-dom'
 import { connect } from 'react-redux'
-import Immutable from 'immutable'
-import {updateData} from '@/actions'
-import Login from '@page/Login'
-import Container from './page/index.js'
+// import Login from '@page/Login'
+// import Container from './page/index.js'
 import Demo from './page/Demo'
+import asyncComponent from './utils/bundle'
+const Login  =  asyncComponent(() => import("@page/Login"))
+const Container  =  asyncComponent(() => import("./page/index.js"))
 class App extends Component {
   constructor(){
     super()
@@ -21,9 +22,9 @@ class App extends Component {
     return (
       <div className="App">
         <Switch>
-            <Route path="/" exact component={Demo}></Route>
-            {/* <Route path="/" exact component={Login}></Route>
-            <Route path="/container" component={Container}></Route> */}
+            {/* <Route path="/" exact component={Demo}></Route> */}
+            <Route path="/" exact component={Login}></Route>
+            <Route path="/container" component={Container}></Route>
         </Switch>
       </div>
     );

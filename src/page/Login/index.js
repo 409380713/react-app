@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './index.scss'
 import { connect } from 'react-redux'
-import Immutable from 'immutable'
 import {updateUserMessage} from './actions'
 import {withRouter} from "react-router-dom";
 import { Button, List, InputItem, Toast } from 'antd-mobile'

@@ -12,34 +12,9 @@ class MessageSwiper extends Component {
   render() {
     return (
       <Carousel
-        vertical
-        dots={false}
-        dragging={false}
-        swiping={false}
-        autoplay
-        infinite
-        autoplayInterval={2000}
+        {...this.props}
         className="message-swiper">
-        <div className="message-swiper-item">
-          <div className="tip-bell">
-            <img src={require('@/assets/images/home/tip_bell.png')} alt="" />
-          </div>
-          <div className="message-text">
-            <span style={{ color: '#ff1300' }}>【新客户提醒】</span>
-            <span> 2018-07-02 19:15:15</span>
-            <p className="message-content">收到汇款时记得哈就看看的借口萨拉大萨达阿斯顿撒大所</p>
-          </div>
-        </div>
-        <div className="message-swiper-item">
-          <div className="tip-bell">
-            <img src={require('@/assets/images/home/tip_bell.png')} alt="" />
-          </div>
-          <div className="message-text">
-            <span style={{ color: '#ff1300' }}>【新客户提醒】</span>
-            <span> 2018-07-02 19:15:15</span>
-            <p className="message-content">收到汇款时记得哈就看看的借口萨拉大萨达阿斯顿撒大所</p>
-          </div>
-        </div>
+        
       </Carousel>
     )
   }

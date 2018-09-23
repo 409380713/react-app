@@ -42,13 +42,19 @@ class AppFooter extends React.Component {
       ]
     };
   }
+  static getDerivedStateFromProps(nextProps,prevState){
+    if(nextProps.location.pathname.split('/')[2] !== prevState.selectedTab){
+      return {
+        selectedTab:nextProps.location.pathname.split('/')[2]
+      }
+    }else{
+      return null
+    }
+  }
   componentDidMount() {
     document.title = 'home'
   }
   handleJumpPage = (key) =>{
-      this.setState({
-        selectedTab:key
-      })
       document.title = key
       this.props.history.push(`/container/${key}`)
   }

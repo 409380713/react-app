@@ -13,8 +13,10 @@ class CRM extends Component {
   }
   render() {
     return (
-      <div>
-        CRM
+      <div className="CRM-box">
+          <header className="CRM-header">CRM</header>
+          {/* swiper */}
+          
       </div>
     )
   }

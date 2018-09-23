@@ -7,10 +7,8 @@ import {LOGIN} from '@/fetch/apis'
 export const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
 // Our worker Saga: 将异步执行 increment 任务
 export function* incrementAsync(action) {
-	console.log('action.params',action)
-	const {status} =  yield call(http.post,LOGIN,action.data)
-	console.log('status',status)
-  	yield put(onRequestSuccess(status));
+	const {status,statusMsg} =  yield call(http.post,LOGIN,action.data)
+  	yield put(onRequestSuccess(statusMsg));
 }
 
 // Our watcher Saga: 在每个 INCREMENT_ASYNC action 调用后，派生一个新的 incrementAsync 任务
