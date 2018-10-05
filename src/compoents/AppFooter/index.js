@@ -56,7 +56,10 @@ class AppFooter extends React.Component {
   }
   handleJumpPage = (key) =>{
       document.title = key
-      this.props.history.push(`/container/${key}`)
+      this.props.history.push({
+        pathname:`/container/${key}`,
+        state:{test:'我来测试路由'}
+      })
   }
   render() {
     const { footerArr } = this.state;
@@ -64,6 +67,7 @@ class AppFooter extends React.Component {
       <div>
         <TabBar
           unselectedTintColor="#949494"
+          
           tintColor="#ff1300"
           barTintColor="white"
         >

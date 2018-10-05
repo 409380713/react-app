@@ -10,6 +10,7 @@ import configureStore from './store'
 import 'antd-mobile/dist/antd-mobile.css';
 global.docHetght = window.screen.height;
 console.log('global.docHetght',global.docHetght)
+console.log('branch dev')
 ReactDOM.render(
     <Provider store={configureStore()}>
     <BrowserRouter basename="/">

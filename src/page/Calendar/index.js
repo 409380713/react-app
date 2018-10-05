@@ -14,7 +14,7 @@ class Calendar extends Component {
   render() {
     return (
       <div>
-        Mine
+        calendar
       </div>
     )
   }

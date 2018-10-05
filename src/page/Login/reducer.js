@@ -1,7 +1,7 @@
 import {UPDATE_USER_MESSAGE} from './actions'
 import {fromJS} from 'immutable'
 const initState = fromJS({
-    userMessage:{}
+    userMessage:{},
 })
 function updateUserMessageReducer (state = initState,actions) {
     switch (actions.type) {

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import './index.scss'
+import {fromJS} from 'immutable'
 import { connect } from 'react-redux'
-import {updateUserMessage} from './actions'
-import {withRouter} from "react-router-dom";
+import { updateUserMessage, requsetLogin } from './actions'
+import { withRouter } from "react-router-dom";
 import { Button, List, InputItem, Toast } from 'antd-mobile'
 import http from '@/fetch/http'
-import {LOGIN} from '@/fetch/apis'
+import { LOGIN } from '@/fetch/apis'
 class Login extends Component {
   constructor(props) {
     super(props)
@@ -14,27 +15,46 @@ class Login extends Component {
       password: '',
     }
   }
-  handleLogin = () =>{
-    const {username,password} = this.state;
-    if(username.trim() === ''){
-        Toast.info('请输入用户名',1)
-        return
-    } 
-    if(password.trim() === ''){
-        Toast.info('请输入密码',1)
-        return
-    } 
-    
-    http.post(LOGIN,{username,password}).then(res => {
-      const {status} = res;
-      if(status === 1){
-        Toast.loading('登录中...',1,()=>{
+  componentWillReceiveProps(nextProps){
+    console.log('prevProps',nextProps)
+    console.log('this.props',this.props)
+    const {userMessage} = nextProps
+    if(fromJS(this.props.userMessage) !== fromJS(userMessage)){
+      if(userMessage.status === 1){
+        Toast.loading('登录中...', 1, () => {
           // 登录成功等待跳转
-          this.props.updateUserMessage(res)
           this.props.history.push('/container/home')
         })
+      }else{
+        console.log(232323)
+        Toast.info(userMessage.statusMsg, 1,)
       }
-    })
+    }
+  }
+  handleLogin = () => {
+    const { username, password } = this.state;
+    if (username.trim() === '') {
+      Toast.info('请输入用户名', 1)
+      return
+    }
+    if (password.trim() === '') {
+      Toast.info('请输入密码', 1)
+      return
+    }
+    this.props.requsetLogin({ username, password })
+    console.log(this.props.userMessage)
+    // http.post(LOGIN,{username,password}).then(res => {
+    //   const {status} = res;
+    //   if(status === 1){
+    //     Toast.loading('登录中...',1,()=>{
+    //       // 登录成功等待跳转
+    //       this.props.updateUserMessage(res)
+    //       this.props.history.push('/container/home')
+    //     })
+    //   }else{
+    //     Toast.info(res.statusMsg,1)
+    //   }
+    // })
   }
   render() {
     return (
@@ -62,13 +82,14 @@ class Login extends Component {
     )
   }
 }
-const mapStateToProps = state =>{
+const mapStateToProps = state => {
   return {
+    userMessage: state.updateUserMessageReducer.toJS().userMessage
   }
 }
 const mapDispatchToProps = dispatch => {
   return {
-    updateUserMessage:(data)=>dispatch(updateUserMessage(data))
+    requsetLogin: (data) => dispatch(requsetLogin(data)),
   }
 }
-export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Login))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login))

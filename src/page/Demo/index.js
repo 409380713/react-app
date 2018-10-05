@@ -2,31 +2,29 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Immutable from 'immutable'
 import {onRequestStart} from './actions'
+import Dialog from './Dialog'
 class Demo extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      username:'',
-      password:''
+      show:false
     }
   }
+  handleOpenDialog = () => {
+    this.setState({
+      show:true
+    })
+  }
+  
   render() {
-    const {username,password} = this.state
+    const {show} = this.state
     return (
-      <div>
-        <input onChange={ e => this.setState({
-          username:e.target.value,
-          password:password
-        })} type="text"/>
-         <input onChange={ e => this.setState({
-          username:username,
-          password:e.target.value
-        })} type="password"/>
-        <button onClick = { e =>this.props.onRequestStart({username,password})} style={{width:'90px',height:'90px'}}>登陆</button>
-        <div>
-          {this.props.value}
-        </div>
-    </div>
+      <div style={{width:'100%',height:'100%'}}>
+         {
+            show && <Dialog handleCloseDialog={e=> this.setState({show:false})}></Dialog>
+         }
+          <button onClick={this.handleOpenDialog} style={{width:'50px',height:'50px'}}>open dialog</button>
+      </div>
     )
   }
 }

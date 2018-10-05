@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import './App.css';
 import {Route,Switch,withRouter} from 'react-router-dom'
 import { connect } from 'react-redux'
-// import Login from '@page/Login'
-// import Container from './page/index.js'
-import Demo from './page/Demo'
-import asyncComponent from './utils/bundle'
-const Login  =  asyncComponent(() => import("@page/Login"))
-const Container  =  asyncComponent(() => import("./page/index.js"))
+import Login from '@page/Login/loadableCompoent'
+import Container from './page/loadableCompoent'
+import Demo from './page/Demo/loadableCompoent'
+// const Login  =  asyncComponent(() => import("@page/Login"))
+// const Container  =  asyncComponent(() => import("./page/index.js"))
 class App extends Component {
   constructor(){
     super()
@@ -16,17 +15,15 @@ class App extends Component {
     }
   }
   componentDidMount(){
-    console.log('props',this.props)
   }
   render() {
     return (
-      <div className="App">
         <Switch>
             {/* <Route path="/" exact component={Demo}></Route> */}
             <Route path="/" exact component={Login}></Route>
             <Route path="/container" component={Container}></Route>
+            <Route path="" component={e => <div>404</div>}></Route>
         </Switch>
-      </div>
     );
   }
 }

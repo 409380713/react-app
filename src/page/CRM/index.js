@@ -11,6 +11,9 @@ class CRM extends Component {
     
     }
   }
+  componentDidMount(){
+    console.log('props',this.props)
+  }
   render() {
     return (
       <div className="CRM-box">
