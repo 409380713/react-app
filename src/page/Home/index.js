@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import './index.scss'
 import { connect } from 'react-redux'
-import Immutable from 'immutable'
-import { Button, List, InputItem, Toast } from 'antd-mobile'
+import { withRouter } from "react-router-dom";
 import AppHomeHeader from '@compoents/AppHomeHeader'
-import http from '@/fetch/http'
 import MessageSwiper from './chilren/MessageSwiper'
 import Entrance from './chilren/Entrance'
 import { WhiteSpace } from 'antd-mobile';
@@ -59,4 +57,4 @@ const mapDispatchToProps = dispatch => {
   return {
   }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(Home)
+export default  withRouter(connect(mapStateToProps,mapDispatchToProps)(Home))

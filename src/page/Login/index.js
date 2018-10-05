@@ -15,22 +15,6 @@ class Login extends Component {
       password: '',
     }
   }
-  componentWillReceiveProps(nextProps){
-    console.log('prevProps',nextProps)
-    console.log('this.props',this.props)
-    const {userMessage} = nextProps
-    if(fromJS(this.props.userMessage) !== fromJS(userMessage)){
-      if(userMessage.status === 1){
-        Toast.loading('登录中...', 1, () => {
-          // 登录成功等待跳转
-          this.props.history.push('/container/home')
-        })
-      }else{
-        console.log(232323)
-        Toast.info(userMessage.statusMsg, 1,)
-      }
-    }
-  }
   handleLogin = () => {
     const { username, password } = this.state;
     if (username.trim() === '') {
@@ -42,19 +26,6 @@ class Login extends Component {
       return
     }
     this.props.requsetLogin({ username, password })
-    console.log(this.props.userMessage)
-    // http.post(LOGIN,{username,password}).then(res => {
-    //   const {status} = res;
-    //   if(status === 1){
-    //     Toast.loading('登录中...',1,()=>{
-    //       // 登录成功等待跳转
-    //       this.props.updateUserMessage(res)
-    //       this.props.history.push('/container/home')
-    //     })
-    //   }else{
-    //     Toast.info(res.statusMsg,1)
-    //   }
-    // })
   }
   render() {
     return (
